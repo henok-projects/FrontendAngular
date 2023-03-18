@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AccountComponent } from './core/components/layouts/account/account.component';
+import { DashboardComponent } from './core/components/layouts/dashboard/dashboard.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,21 @@ const routes: Routes = [
         loadChildren: () =>
           import('./pages/account/login/login.module').then(
             (m) => m.LoginModule
+          ),
+      },
+    ],
+  },
+  {
+    path: 'dashboard',
+    component: DashboardComponent,
+    data: { pageTitle: 'Dashboard Master Layout' },
+    children: [
+      {
+        path: '',
+        data: { pageTitle: 'Dashboard Summary' },
+        loadChildren: () =>
+          import('./pages/dashboard/summary/summary.module').then(
+            (m) => m.SummaryModule
           ),
       },
     ],

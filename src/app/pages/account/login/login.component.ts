@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Ilogin } from '../model/login.interface';
 import { AccountService } from '../../../core/services/account/account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   };
   apiResponse: any = {};
   sending: boolean = false;
-  constructor(private acountService: AccountService) {}
+  constructor(private acountService: AccountService, private _router: Router) {}
   ngOnInit(): void {}
 
   postLoginForm() {
@@ -33,6 +34,11 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('rememberMe', '${ this.loginInput.rememberMe }');
       } else {
         localStorage.removeItem('rememberMe');
+      }
+
+      //redirect to Dashboard
+      if (this.apiResponse && this.apiResponse.id) {
+        this._router.navigate(['dashboard']);
       }
     });
   }
