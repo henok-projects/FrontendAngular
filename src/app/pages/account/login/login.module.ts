@@ -4,7 +4,7 @@ import { LoginComponent } from './login.component';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AccountService } from 'src/app/core/services/account/account.service';
+import { AuthService } from 'src/app/core/services/account/auth.service';
 
 @NgModule({
   declarations: [LoginComponent],
@@ -20,6 +20,6 @@ import { AccountService } from 'src/app/core/services/account/account.service';
       },
     ]),
   ],
-  providers: [AccountService],
+  providers: [AuthService],
 })
 export class LoginModule {}

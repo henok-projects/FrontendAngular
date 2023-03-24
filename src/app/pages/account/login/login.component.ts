@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Ilogin } from '../model/login.interface';
-import { AccountService } from '../../../core/services/account/account.service';
+import { AuthService } from '../../../core/services/account/auth.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   };
   apiResponse: any = {};
   sending: boolean = false;
-  constructor(private acountService: AccountService, private _router: Router) {}
+  constructor(private acountService: AuthService, private _router: Router) {}
   ngOnInit(): void {}
 
   postLoginForm() {
